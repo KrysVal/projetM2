@@ -1,0 +1,97 @@
+\documentclass[a4paper,12pt,twoside]{article}
+% Pour une impression recto verso, utilisez plutôt ce documentclass :
+%\documentclass[a4paper,11pt,twoside,final]{article}
+
+\usepackage[english,francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{hyperref}
+\usepackage[french]{varioref}
+\usepackage[a4paper]{geometry}
+\usepackage{xcolor}
+\usepackage{cmlgc}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{comment}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+
+\geometry{hscale=0.77,vscale=0.84,centering} % parametrage des marges
+
+\newenvironment{vcenterpage}
+{\newpage\vspace*{\fill}}
+{\vspace*{\fill}\par\pagebreak}
+
+\pagestyle{fancy}
+\usepackage{lastpage}
+\renewcommand\headrulewidth{0.7pt}
+\fancyhead[L]{UE projet 3}
+\fancyhead[R]{Université Claude Bernard Lyon 1}
+
+\renewcommand\footrulewidth{0.7pt}
+\fancyfoot[C]{Page \thepage/\pageref{LastPage}}		
+\fancyfoot[R]{Octobre 2017}
+
+\newcommand{\reporttitle}{Développement d’un pipeline d’assemblage et d’annotation de génome bactérien déployable sur le cloud}     % Titre
+\newcommand{\reportauthor}{Cécile \textsc{Hilpert}\\
+							Sumaira \textsc{Javaid}\\
+							Lucía \textsc{Castro Garcia}\\
+							Krystian \textsc{Valenducq}} % Auteur
+\newcommand{\reportsubject}{{CAHIER DES CHARGES}} % Sujet
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\forceindent}{\leavevmode{\parindent=1.5em\indent}}
+
+\setlength{\parskip}{1ex} % Espace entre les paragraphes
+
+\hypersetup{
+    pdftitle={\reporttitle},%
+    pdfauthor={\reportauthor},%
+    pdfsubject={\reportsubject},%
+    pdfkeywords={rapport} {vos} {mots} {clés}
+}
+
+\hypersetup{                    % parametrage des hyperliens
+    colorlinks=true,                % colorise les liens
+    breaklinks=true,                % permet les retours à la ligne pour les liens trop longs
+    urlcolor= blue,                 % couleur des hyperliens
+    linkcolor= darkgray,                % couleur des liens internes aux documents (index, figures, tableaux, equations,...)
+    citecolor= green                % couleur des liens vers les references bibliographiques
+    }
+
+\begin{document}
+  \include{couverture}
+  %\cleardoublepage % Dans le cas du recto verso, ajoute une page blanche si besoin
+ 
+  
+
+  
+  
+
+ \tableofcontents % Table des matières
+  \sloppy          % Justification moins stricte : des mots ne dépasseront pas des paragraphes
+  \cleardoublepage
+  
+
+  \include{1_presentation_du_projet}
+  
+  
+  \include{2_besoins}
+  
+  \include{3_contraintes}
+  
+  \include{4_deroulement_du_projet}
+  
+  \include{5_references}
+  
+  
+  
+  
+  
+  
+\end{document}
+

@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Pr\351sentation du projet}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Probl\351matique}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Objectifs}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Description de l'existant}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Expression des besoins}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Besoins fonctionnels}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Pipeline d'assemblage et d'annotation}{subsection.2.1}% 7
+\BOOKMARK [3][-]{subsubsection.2.1.2}{V\351rification de la qualit\351 du pipeline}{subsection.2.1}% 8
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Environnement d'ex\351cution du pipeline}{subsection.2.1}% 9
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Point de vue utilisateur}{subsection.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.2}{Besoins non-fonctionnels}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.3}{Informations relatives aux contenus}{section.2}% 12
+\BOOKMARK [1][-]{section.3}{Contraintes}{}% 13
+\BOOKMARK [2][-]{subsection.3.1}{Co\373ts}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.2}{D\351lais}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.3}{Contraintes d'impl\351mentation \(souhait\351es par le client\)}{section.3}% 16
+\BOOKMARK [1][-]{section.4}{D\351roulement du projet}{}% 17
+\BOOKMARK [2][-]{subsection.4.1}{Plannification}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.2}{Description des \351tapes du pipeline et logiciels utilis\351s}{section.4}% 19
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Contr\364le qualit\351 et trimming des s\351quences brutes}{subsection.4.2}% 20
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Assemblage des lectures}{subsection.4.2}% 21
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Alignement contre g\351nome de r\351f\351rence}{subsection.4.2}% 22
+\BOOKMARK [3][-]{subsubsection.4.2.4}{Annotation du g\351nome}{subsection.4.2}% 23
+\BOOKMARK [2][-]{subsection.4.3}{Plan d'assurance qualit\351}{section.4}% 24
+\BOOKMARK [2][-]{subsection.4.4}{Responsabilit\351s}{section.4}% 25
+\BOOKMARK [1][-]{section.5}{R\351f\351rences bibliographiques}{}% 26

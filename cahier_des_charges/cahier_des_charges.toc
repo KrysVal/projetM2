@@ -1,0 +1,27 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Pr\IeC {\'e}sentation du projet}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Probl\IeC {\'e}matique}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Objectifs}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Description de l'existant}{3}{subsection.1.3}
+\contentsline {section}{\numberline {2}Expression des besoins}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Besoins fonctionnels}{5}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Pipeline d'assemblage et d'annotation}{5}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}V\IeC {\'e}rification de la qualit\IeC {\'e} du pipeline}{5}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}Environnement d'ex\IeC {\'e}cution du pipeline}{5}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.4}Point de vue utilisateur}{5}{subsubsection.2.1.4}
+\contentsline {subsection}{\numberline {2.2}Besoins non-fonctionnels}{6}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Informations relatives aux contenus}{6}{subsection.2.3}
+\contentsline {section}{\numberline {3}Contraintes}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Co\IeC {\^u}ts}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}D\IeC {\'e}lais}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Contraintes d'impl\IeC {\'e}mentation (souhait\IeC {\'e}es par le client)}{7}{subsection.3.3}
+\contentsline {section}{\numberline {4}D\IeC {\'e}roulement du projet}{8}{section.4}
+\contentsline {subsection}{\numberline {4.1}Plannification}{8}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Description des \IeC {\'e}tapes du pipeline et logiciels utilis\IeC {\'e}s}{8}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Contr\IeC {\^o}le qualit\IeC {\'e} et trimming des s\IeC {\'e}quences brutes}{8}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Assemblage des lectures}{8}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Alignement contre g\IeC {\'e}nome de r\IeC {\'e}f\IeC {\'e}rence}{9}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.4}Annotation du g\IeC {\'e}nome}{9}{subsubsection.4.2.4}
+\contentsline {subsection}{\numberline {4.3}Plan d'assurance qualit\IeC {\'e}}{9}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Responsabilit\IeC {\'e}s}{9}{subsection.4.4}
+\contentsline {section}{\numberline {5}R\IeC {\'e}f\IeC {\'e}rences bibliographiques}{10}{section.5}

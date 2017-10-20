@@ -1,0 +1,81 @@
+\section{Expression des besoins}
+
+\subsection{Besoins fonctionnels}
+
+\textbf{Données de départ} \\
+\forceindent Dans un premier temps, les données de départ seront des reads courts (Illumina). En fonction du temps disponible, la modification du pipeline pour pouvoir y intégrer l’analyse de reads longs (PacBio, MinIon) pourra être envisagée. 
+
+
+\subsubsection{Pipeline d'assemblage et d'annotation}
+
+\begin{itemize}
+\setlength{\itemindent}{.2in}
+\item Nettoyage des données brutes (élimination de contamination avec du DNA d’autres organismes). Élimination d’adaptateurs et de lectures de mauvaises qualités
+\item Assemblage de novo du génome bactérien choisi
+\item Annotation des gènes codants, 2 stratégies possibles : (1) Aligner le génome contre une base de données protéiques (blastx) pour identifier les gènes codants pour des protéines identifiées dans la littérature. (2) Détecter les gènes de novo et les annoter par alignement
+\end{itemize}
+
+\subsubsection{Vérification de la qualité du pipeline}
+
+\begin{itemize}
+\setlength{\itemindent}{.2in}
+\item Comparaison de l’assemblage avec la référence disponible par alignement
+\item Comparaison des gènes annotés avec ceux annotés dans le génome de référence
+\item Mettre en place une métrique permettant de qualifier la qualité de l’assemblage par rapport à la(les) référence(s) 
+\end{itemize}
+
+
+\subsubsection{Environnement d'exécution du pipeline}
+
+\begin{itemize}
+\setlength{\itemindent}{.2in}
+\item Ecriture du pipeline en langage OCaml avec la bibliothèque \href{https://github.com/pveber/bistro}{Bistro}
+\item Isolement du pipeline et de ses ressources (installations des logiciels bioinformatiques) dans 	un « container » créé avec docker sur un cloud
+\item Création d'un formulaire web permettant l'interaction des utilisateurs avec notre pipeline
+\end{itemize}
+
+\subsubsection{Point de vue utilisateur}
+
+Pour lancer le pipeline, l’utilisateur devra se connecter à une machine virtuelle sur un cloud, se connecter à cette machine à l’aide d’un navigateur web puis utilisera un formulaire pour renseigner les paramètres et les fichiers d’entrée. 
+
+\subsection{Besoins non-fonctionnels}
+
+\textbf{Exigence de qualité}
+
+\begin{itemize}
+\setlength{\itemindent}{.2in}
+\item Aide contextuelle (documentation accessible en ligne sous forme de tutoriel et dans un document à part).
+\end{itemize}
+
+\textbf{Exigence de performances}
+
+\begin{itemize}
+\setlength{\itemindent}{.2in}
+\item Temps d’exécution raisonnable en rapport avec la taille des données
+\item Elimination de bugs informatiques
+\end{itemize}
+
+\textbf{Accesibilité}
+
+\begin{itemize}
+\setlength{\itemindent}{.2in}
+\item Rendre l'outil disponible via le cloud 
+\end{itemize}
+
+\textbf{Internationalisation}
+
+\begin{itemize}
+\setlength{\itemindent}{.2in}
+\item Les commentaires à l’intérieur du code et la documentation seront en anglais
+\end{itemize}
+
+\subsection{Informations relatives aux contenus}
+
+
+\textbf{Ressources générées} \\
+\forceindent Fichiers de sorties contenant le génome assemblé (ensemble de contigs ou dans le meilleur des cas, un seul contig au format MULTIFASTA) et le fichier GFF contenant les annotations des gènes
+\\[0.5cm]
+\forceindent {\textbf{Obtention des données générées}}\\ 
+ \forceindent Les fichiers créés seront disponibles via le navigateur web, où ils pourront être téléchargés par l’utilisateur 
+
+

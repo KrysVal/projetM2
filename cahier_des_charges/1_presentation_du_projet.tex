@@ -1,0 +1,54 @@
+\section{Présentation du projet}
+
+\subsection{Problématique}
+
+Grâce aux techniques de séquençage haut-débit, la recherche scientifique est aujourd’hui capable d’acquérir dans un intervalle de temps très court, des volumes massifs de données génomiques, transcriptomiques, etc... De ce fait, le problème actuellement n’est plus la production de données, mais leur analyse. Cette production massive de données nécessite de méthodes d’analyses plus sophistiquées qui sont le plus souvent très coûteuses, que ce soit en temps de calcul ou mémoire. 
+
+La majorité des analyses sont aujourd’hui dites “à façon”, conçues spécifiquement pour fonctionner avec certaines données expérimentales. Cependant, dans les protocoles d’analyse de données il existe des étapes récurrentes que l’on peut automatiser. Par exemple, l’assemblage du génome et son annotation, se basant sur des outils existants.
+
+
+\subsection{Objectifs}
+
+L’objectif de ce projet est de rendre automatique ces étapes récurrentes en analyse génomique, en développant un outil disponible sur le web (cloud) d’assemblage et annotation automatiques de génome, spécifiquement de génome bactérien. Le but de la création de cet outil n’est pas uniquement d’assister les travaux de recherche des bioinformaticiens, mais aussi de faciliter leur utilisation par des scientifiques n’ayant pas de compétences en informatique, avec par exemple une interface web très “user-friendly”. Un autre objectif est de valider une méthodologie permettant de transformer une chaine de traitement en un outil accessible visant à réduire significativement le travail logiciel.  
+
+
+
+\subsection{Description de l'existant}
+
+Il existe des outils d’analyse automatique de données qui sont disponibles sur le web. Néanmoins, ces outils ne répondent pas complètement à nos besoins. Une liste de ces outils sera décrite ci-dessous, avec une description correspondant à chaque outil et les raisons pour lesquelles il n’est pas adapté aux besoins présentés dans la problématique. 
+\\[0.4cm]
+\textbf{Galaxy}\\
+Il s’agit d’une plateforme d’analyse de données génomiques, métagénomiques et transcriptomiques en ligne. Il permet par exemple le trimming de séquences, l’alignement contre un génome de référence, mais aussi d’effectuer une analyse CHIP-seq, de faire du reséquençage et de l’assemblage (RNA, séquences PE et DNA), avec une vérification de la qualité de ce dernier. On y trouve également d’autre fonctionnalités comme l’annotation de SNPs et ou encore la prédiction de leur effet. Cependant, les logiciels d’annotation qui y sont disponibles (ANNOVAR, GEMINI, SNPEff) servent uniquement à annoter les variants génétiques. De plus, il est nécessaire d’implémenter le pipeline “soi-même”, c’est-à-dire qu’il faut lancer d’abord l’assemblage puis l’annotation. De plus, la conception de nouveaux pipelines ou l’ajout d’outils sont compliqués à implémenter pour les bioinformaticiens et la lecture des résultats est difficile pour les grosses analyses de données.
+\\[0.4cm]
+\textbf{MicroScope}\\
+Il s’agit d’une plateforme web qui permet de faire de l’analyse comparative de génome microbien et de l’annotation fonctionnelle manuelle de ces derniers.
+\\[0.4cm]
+\textbf{MyPro}\\
+Cet outil permet l’assemblage et l’annotation de génomes procaryotes. Les seules façons d’utiliser le pipeline sont : (1) Télécharger et compiler les codes sources et télécharger les différents logiciels nécessaires. Pour cela, il est nécessaire d’être familiarisé avec l’environnement Unix et les outils en lignes de commande. (2) Utiliser une version VirtualBox avec tous les logiciels installés. Cependant, une installation de ce type est bien plus lourde qu’uniquement utiliser un navigateur web pour accéder au pipeline.
+\\[0.4cm]
+\textbf{MEGAnnotator}\\
+Il s’agit d’un pipeline d’assemblage, vérification de la qualité d’assemblage et d’annotation user-friendly pour les génomes procaryotes. Le logiciel comprend une interface graphique facile d’utilisation mais l’étape d’installation de cet outil peut s’avérer compliquée pour les utilisateurs sans compétences informatiques (surtout en langage bash). L’utilisation peut se faire uniquement dans environnement Unix ou en installant une VirtualBox mais ceci diminue la mémoire disponible et la vitesse d'exécution.
+
+
+
+\begin{comment}
+\begin{center}
+
+
+\begin{tabular}{ | l | p{6.5cm} | p{6.5cm} | }
+
+
+\hline
+\rowcolor[RGB]{240,240,220} \textbf{Outils} & \textbf{Description} & \textbf{Désavantages} \\ \hline \hline
+Galaxy & \hspace{0.8cm}Logiciel d’analyse de données génomiques en ligne. Fonctionnalités : trimming de séquences, alignement contre génome de référence, analyse CHIP-seq, réséquencage, assemblage (RNA, séquences PE et DNA), qualité de l’assemblage, annotation de SNPs et prédiction de leur effet, etc.[1] & \hspace{0.8cm}Le logiciel Unicycler[2] d’assemblage de génomes bactériens utilisé par GALAXY a besoin de deux types de données : reads courts et reads longs. 
+Les logiciels d’annotation disponibles (ANNOVAR, GEMINI, SNPEff) servent à annoter les variants génétiques uniquement. Il faut faire le pipeline “soi-même” (lancer d’abord l’assemblage puis l’annotation). 
+Les pipelines sont compliqués à implémenter pour les bioinformaticiens et la lecture des résultats est difficile pour les grosses analyses de données.  \\ \hline
+MicroScope & & \\ \hline
+MyPro & & \\ \hline
+MEGAnnotator & & \\ 
+\hline
+
+\end{tabular}
+
+\end{center}
+\end{comment}
