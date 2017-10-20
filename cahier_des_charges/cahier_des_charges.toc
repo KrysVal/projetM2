@@ -24,4 +24,3 @@
 \contentsline {subsubsection}{\numberline {4.2.4}Annotation du g\IeC {\'e}nome}{9}{subsubsection.4.2.4}
 \contentsline {subsection}{\numberline {4.3}Plan d'assurance qualit\IeC {\'e}}{9}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Responsabilit\IeC {\'e}s}{9}{subsection.4.4}
-\contentsline {section}{\numberline {5}R\IeC {\'e}f\IeC {\'e}rences bibliographiques}{10}{section.5}

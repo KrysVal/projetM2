@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+
+\bibitem{spades}
+Anton Bankevich, Sergey Nurk, Dmitry Antipov, Alexey~A Gurevich, Mikhail
+  Dvorkin, Alexander~S Kulikov, Valery~M Lesin, Sergey~I Nikolenko, Son Pham,
+  Andrey~D Prjibelski, et~al.
+\newblock Spades: a new genome assembly algorithm and its applications to
+  single-cell sequencing.
+\newblock {\em Journal of computational biology}, 19(5):455--477, 2012.
+
+\bibitem{camacho2009blast+}
+Christiam Camacho, George Coulouris, Vahram Avagyan, Ning Ma, Jason
+  Papadopoulos, Kevin Bealer, and Thomas~L Madden.
+\newblock Blast+: architecture and applications.
+\newblock {\em BMC bioinformatics}, 10(1):421, 2009.
+
+\bibitem{gurevich2013quast}
+Alexey Gurevich, Vladislav Saveliev, Nikolay Vyahhi, and Glenn Tesler.
+\newblock Quast: quality assessment tool for genome assemblies.
+\newblock {\em Bioinformatics}, 29(8):1072--1075, 2013.
+
+\bibitem{langmead2012fast}
+Ben Langmead and Steven~L Salzberg.
+\newblock Fast gapped-read alignment with bowtie 2.
+\newblock {\em Nature methods}, 9(4):357--359, 2012.
+
+\end{thebibliography}
