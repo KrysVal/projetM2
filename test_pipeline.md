@@ -27,7 +27,8 @@ Prédiction faites par PROKKA (pour ce test) :
  * Mise en oeuvre : script split_gff.py qui permet de récupérer le champ nom dans un fichier. On obtient un fichier pour la référence et un fichier pour l'annotation Prokka. Le résultat peut être visualisé par un diagramme de Venn (utilisation d'un outil en ligne : http://bioinformatics.psb.ugent.be/webtools/Venn/)
 
  * Résultat : 
- ![Nom des gènes retrouvés en commun pour la référence et l'annotation Prokka](first_comparison.png)
+
+![Nom des gènes retrouvés en commun pour la référence et l'annotation Prokka](first_comparison.png)
 
 
  * **Remarque** : cette première approche est très sommaire et peu rigoureuse. Il faudrait faire des vérifications sur autre chose que les noms, et notamment regarder si les séquences correspondent vraiment. 
