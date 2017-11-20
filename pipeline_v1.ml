@@ -5,6 +5,15 @@ open Bistro_bioinfo.Std;;
 open Bistro_utils;;
 open Bistro_bioinfo;;
 
+
+(* Homemade simple prokka *)
+
+let prokka fasta_file = workflow ~descr:"prokka"[
+	cmd "prokka" [ 
+		dep fasta_file;
+	]
+]
+
 let reads1 = input "../projetM2_data/data/reads1_100k.fastq" (* Read file as workflow *)
 let reads2 = input "../projetM2_data/data/reads2_100k.fastq"
 
@@ -18,9 +27,9 @@ let contigs = assembly/Spades.contigs (* Selector for the contigs*)
 let annotation = Prokka.run contigs (* Launch prokka with default arguments. See Prokka.mli to see all optionnal arguments *)
 
 let repo = Repo.[
-  [ "assembly" ] %> assembly ;
   [ "annotation" ] %> annotation ; 
 ]
+
 
 let logger = Console_logger.create () (* Show more error messages *)
 
