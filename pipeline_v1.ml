@@ -1,5 +1,6 @@
 #require "bistro.bioinfo bistro.utils";;
 
+open Core_kernel.Std;;
 open Bistro.EDSL;;
 open Bistro_bioinfo.Std;;
 open Bistro_utils;;
@@ -10,9 +11,12 @@ open Bistro_bioinfo;;
 
 let prokka fasta_file = workflow ~descr:"prokka"[
 	cmd "prokka" [ 
+		string "--force";
+		opt "--outdir" ident dest ; 
 		dep fasta_file;
 	]
 ]
+
 
 let reads1 = input "../projetM2_data/data/reads1_100k.fastq" (* Read file as workflow *)
 let reads2 = input "../projetM2_data/data/reads2_100k.fastq"
@@ -24,9 +28,10 @@ let assembly = Spades.spades ~memory:4 ~pe:([reads1],[reads2]) ()
 
 let contigs = assembly/Spades.contigs (* Selector for the contigs*)
 
-let annotation = Prokka.run contigs (* Launch prokka with default arguments. See Prokka.mli to see all optionnal arguments *)
+let annotation = prokka contigs (* Launch prokka with default arguments. See Prokka.mli to see all optionnal arguments *)
 
 let repo = Repo.[
+  [ "assembly" ] %> assembly ; 
   [ "annotation" ] %> annotation ; 
 ]
 
