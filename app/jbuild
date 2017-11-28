@@ -1,0 +1,8 @@
+(jbuild_version 1)
+
+(executable
+ ((name pipeline_v1)
+  (public_name pipeline_v1) 	
+  (libraries (bistro.bioinfo bistro.utils))
+))
+

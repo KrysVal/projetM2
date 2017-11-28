@@ -1,5 +1,3 @@
-#require "bistro.bioinfo bistro.utils";;
-
 open Core_kernel.Std;;
 open Bistro.EDSL;;
 open Bistro_bioinfo.Std;;
@@ -8,6 +6,8 @@ open Bistro_bioinfo;;
 
 
 (* Homemade simple prokka *)
+
+let a = Truc.a ;;
 
 let env = docker_image ~account:"pveber" ~name:"prokka" ~tag:"1.12" ()
 
@@ -55,6 +55,19 @@ let prokka ?prefix ?addgenes ?locustag ?increment ?gffver ?compliant
     ] ;
 ]
 
+(* Test Trimmomatic
+
+let env = docker_image ~account:"pveber" ~name:"trimmomatic" ~tag:"0.36" ()
+
+let trimmo reads1 reads2 output1 output2 = 
+  workflow ~descr:"trimmomatic" [
+    cmd "trimmomatic" ~env[
+      string "PE" ; 
+      option dep reads1 ; 
+      option dep reads2 ;
+    ] 
+  ]  
+*)
 
 let reads1 = input "../projetM2_data/data/reads1_100k.fastq" (* Read file as workflow *)
 let reads2 = input "../projetM2_data/data/reads2_100k.fastq"

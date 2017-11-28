@@ -1,0 +1,10 @@
+lib: [
+  "_build/install/default/lib/projetM2/META" {"META"}
+  "_build/install/default/lib/projetM2/opam" {"opam"}
+]
+bin: [
+  "_build/install/default/bin/pipeline_v1" {"pipeline_v1"}
+]
+doc: [
+  "_build/install/default/doc/projetM2/README.md"
+]
