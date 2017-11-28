@@ -1,3 +1,5 @@
+#require "bistro.bioinfo bistro.utils"
+
 open Core_kernel.Std;;
 open Bistro.EDSL;;
 open Bistro_bioinfo.Std;;
