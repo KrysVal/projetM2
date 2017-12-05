@@ -8,7 +8,6 @@ let env = docker_image ~account:"pveber" ~name:"ncbi-blast" ~tag:"2.4.0" ()
 
 let db_name = "db"
 
-
 let fastadb fa dbtype = 
 	workflow ~descr:"blast.makedb" [
 		mkdir_p dest ; 
@@ -68,4 +67,3 @@ let blastp ?evalue ?word_size ?task ?gapopen ?gapextend ?penalty
 			opt "-num_threads" ident np ; 
 		]
 	]	
-

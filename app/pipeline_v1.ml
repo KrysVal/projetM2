@@ -4,21 +4,6 @@ open Bistro_bioinfo.Std;;
 open Bistro_utils;;
 open Bistro_bioinfo;;
 
-(*let a = Truc.a ;;*)
-
-(* Test Trimmomatic
-
-let env = docker_image ~account:"pveber" ~name:"trimmomatic" ~tag:"0.36" ()
-
-let trimmo reads1 reads2 output1 output2 = 
-  workflow ~descr:"trimmomatic" [
-    cmd "trimmomatic" ~env[
-      string "PE" ; 
-      option dep reads1 ; 
-      option dep reads2 ;
-    ] 
-  ]  
-*)
 
 let reads1 = input "/home/cecile/projetM2_data/data/ERR1073432_1.fastq" (* Read file as workflow *)
 let reads2 = input "/home/cecile/projetM2_data/data/ERR1073432_2.fastq"
@@ -32,9 +17,9 @@ let assembly = Spades.spades ~memory:4 ~pe:([reads1],[reads2]) ()
 
 let contigs = assembly/Spades.contigs (* Selector for the contigs*)
 
-let annotation = Prokka2.run contigs (* Launch prokka with default arguments. See Prokka.mli to see all optionnal arguments*)
+let annotation = Prokka2.run ~genus:"Escherichia" ~usegenus:true contigs (* Launch prokka with default arguments. See Prokka.mli to see all optionnal arguments*)
 
-let prokka_transcripts = annotation/Prokka2.transcripts(* TO DO : add selector to prokka.ml*)
+let prokka_transcripts = annotation/Prokka2.transcripts
 let proteins = annotation/Prokka2.proteins
 
 let dbtype1 = string "nucl"
@@ -61,4 +46,4 @@ let repo = Repo.[
 
 let logger = Console_logger.create () (* Show more error messages *)
 
-let () = Repo.build ~logger ~outdir:"resultat_complet" ~np:2 ~mem:(`GB 4) repo;; (* Launch pipeline *)
+let () = Repo.build ~logger ~outdir:"resultat_complet_with_genus" ~np:2 ~mem:(`GB 4) repo;; (* Launch pipeline *)
