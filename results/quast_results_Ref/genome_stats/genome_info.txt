@@ -1,0 +1,14 @@
+reference chromosomes:
+	ENA_U00096_U00096.3_Escherichia_coli_str._K-12_substr._MG1655__complete_genome. (total length: 4641652 bp, maximal covered length: 4559250 bp)
+
+total genome size: 4641652
+
+gap min size: 50
+partial gene/operon min size: 100
+
+
+
+assembly                 | genome    | duplication | gaps      | genes     | partial   | operons   | partial   |
+                         | fraction  | ratio       | number    |           | genes     |           | operons   |
+================================================================================================================
+spades_assembly          | 98.22473% | 1.00058     | 59        | -         | -         | -         | -         |

@@ -1,0 +1,13 @@
+Assembly	spades_assembly
+# misassemblies	3
+    # relocations	1
+    # translocations	0
+    # inversions	2
+# misassembled contigs	1
+Misassembled contigs length	299328
+# local misassemblies	12
+# mismatches	147
+# indels	19
+    # indels (<= 5 bp)	18
+    # indels (> 5 bp)	1
+Indels length	111
