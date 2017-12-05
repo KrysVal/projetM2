@@ -10,12 +10,16 @@ let reads2 = input "/home/cecile/projetM2_data/data/ERR1073432_2.fastq"
 let reference = input "/home/cecile/projetM2_data/ecoli.fna"
 let ref_prot = input "/home/cecile/projetM2_data/data/ref_prot.fa"
 
+let ref_quast = input "data/Ref_Genome_ecoli_K12/U00096.fasta"
+
 let assembly = Spades.spades ~memory:4 ~pe:([reads1],[reads2]) ()
 (* Look at spades.mli in bistro github for the arguments. The function spades returns a type [`spades] directory workflow. 
 ? means optionnal arguments. Here we provide ~pe arguments which needs a pair of fastq workflow list. reads1 and reads2 are fastq workflow. [reads1] is a fastq workflow list.
 () is unit argument *)
 
 let contigs = assembly/Spades.contigs (* Selector for the contigs*)
+
+let quast_output = Quast.quast ~reference:ref_quast  ~labels:["spades_assembly"] [contigs] (* Launch quast with reference assembly file *)
 
 let annotation = Prokka2.run ~genus:"Escherichia" ~usegenus:true contigs (* Launch prokka with default arguments. See Prokka.mli to see all optionnal arguments*)
 
@@ -40,11 +44,13 @@ let blast_treatment = Blast_treatment.run xml
 
 let repo = Repo.[
   [ "assembly" ] %> assembly ; 
+  [ "quast" ] %> quast_output; 
   [ "annotation" ] %> annotation ; 
   [ "blast_nucl" ] %> results_blast ; 
   [ "blast_prot" ] %> results_blast2 ;
   [ "blast_prot_xml" ] %> results_blast_xml ; 
   [ "test" ] %> blast_treatment ; 
+
 ]
 
 

@@ -1,0 +1,63 @@
+/usr/local/lib/python2.7/dist-packages/quast-4.3-py2.7.egg/EGG-INFO/scripts/quast.py --labels spades_assembly --output-dir /bistro/dest/results /bistro/data/9c4b44be4a4f775f74a2bc3c2809933d
+
+Version: 4.3
+
+System information:
+  OS: Linux-3.19.0-80-generic-x86_64-with-debian-stretch-sid (linux_64)
+  Python version: 2.7.12
+  CPUs number: 2
+
+Started: 2017-12-04 22:08:06
+
+Logging to /bistro/dest/results/quast.log
+NOTICE: Maximum number of threads is set to 1 (use --threads option to set it manually)
+
+CWD: /
+Main parameters: 
+  Threads: 1, minimum contig length: 500, ambiguity: one, threshold for extensive misassembly size: 1000
+
+Contigs:
+  Pre-processing...
+  /bistro/data/9c4b44be4a4f775f74a2bc3c2809933d ==> spades_assembly
+
+2017-12-04 22:08:08
+Running Basic statistics processor...
+  Contig files: 
+    spades_assembly
+  Calculating N50 and L50...
+    spades_assembly, N50 = 126004, L50 = 12, Total length = 4561906, GC % = 50.75, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /bistro/dest/results/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /bistro/dest/results/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /bistro/dest/results/basic_stats/GC_content_plot.pdf
+  Drawing Coverage histogram (bin size: 1x)...
+    saved to /bistro/dest/results/basic_stats/coverage_histogram.pdf
+  Drawing spades_assembly coverage histogram (bin size: 1x)...
+    saved to /bistro/dest/results/basic_stats/spades_assembly_coverage_histogram.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding option to enable it.
+
+2017-12-04 22:08:10
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2017-12-04 22:08:11
+RESULTS:
+  Text versions of total report are saved to /bistro/dest/results/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /bistro/dest/results/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) saved to /bistro/dest/results/report.html
+  PDF version (tables and plots) is saved to /bistro/dest/results/report.pdf
+  Icarus (contig browser) is saved to /bistro/dest/results/icarus.html
+  Log saved to /bistro/dest/results/quast.log
+
+Finished: 2017-12-04 22:08:11
+Elapsed time: 0:00:04.539639
+NOTICEs: 2; WARNINGs: 0; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
