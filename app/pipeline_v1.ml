@@ -34,6 +34,9 @@ let results_blast = Blast.blastn ~threads:2 ~evalue:1e-6 blastdb_allgenome prokk
 let results_blast2 = Blast.blastp ~threads:2 ~evalue:1e-6 blastdb_prot proteins out_blast2
 let results_blast_xml = Blast.blastp ~threads:2 ~evalue:1e-6 ~outfmt:"5" blastdb_prot proteins out_blast_xml 
 
+let xml = input "/home/cecile/projetM2/resultat_complet/blast_prot_xml/cds_vs_proteinsref.xml"
+
+let blast_treatment = Blast_treatment.run xml 
 
 let repo = Repo.[
   [ "assembly" ] %> assembly ; 
@@ -41,6 +44,7 @@ let repo = Repo.[
   [ "blast_nucl" ] %> results_blast ; 
   [ "blast_prot" ] %> results_blast2 ;
   [ "blast_prot_xml" ] %> results_blast_xml ; 
+  [ "test" ] %> blast_treatment ; 
 ]
 
 
