@@ -49,9 +49,7 @@ let blastp ?evalue ?word_size ?task ?gapopen ?gapextend ?penalty
 	workflow ~descr:"blastp" ~np:threads [ 
 		mkdir_p dest ; 
 		cmd "blastp" ~env [
-			opt "-db" ident (dep db // db_name) ; 
-			opt "-query" dep query ; 
-			opt "-out" ident (dest // out_name) ; 
+			
 			option (opt "-evalue" float) evalue ;
 			option (opt "-word_size" int) word_size ;
 			option (opt "-task" string) task ; 
@@ -66,4 +64,26 @@ let blastp ?evalue ?word_size ?task ?gapopen ?gapextend ?penalty
 			option (opt "-max_target_seqs" int) max_target_seqs ; 
 			opt "-num_threads" ident np ; 
 		]
-	]	
+	]
+
+let test_blastp ?evalue ?(threads = 4) db query = workflow ~descr:"blastp_xml" ~np:threads [
+    mkdir_p dest ;
+    cmd "blastp" ~env [
+      opt "-db" ident (dep db // db_name) ; 
+	  opt "-query" dep query ; 
+	  opt "-out" ident (dest // "results_blast.blast") ; 
+	  option (opt "-evalue" float) evalue ;
+    ] ;
+    and_list [
+      cmd "blastp" ~env [ 
+      	string "-outfmt 5" ; 
+      	opt "-db" ident (dep db // db_name) ; 
+	  	opt "-query" dep query ; 
+	  	opt "-out" ident (dest // "results_blast.xml") ; 
+	  	option (opt "-evalue" float) evalue ;
+      	] ;
+    ] ;
+  ]
+
+let xml = selector ["results_blast.xml"]
+let readable = selector ["results_blast.blast"]

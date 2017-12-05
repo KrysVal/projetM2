@@ -28,17 +28,14 @@ let proteins = annotation/Prokka2.proteins
 
 let dbtype1 = string "nucl"
 let dbtype2 = string "prot"
-let out_blast1 = "transcripts_vs_allrefgenome.blast"
-let out_blast2 = "cds_vs_proteinsref.blast"
-let out_blast_xml = "cds_vs_proteinsref.xml"
 
-let blastdb_allgenome = Blast.fastadb reference dbtype1
+(*let blastdb_allgenome = Blast.fastadb reference dbtype1*)
 let blastdb_prot = Blast.fastadb ref_prot dbtype2
-let results_blast = Blast.blastn ~threads:2 ~evalue:1e-6 blastdb_allgenome prokka_transcripts out_blast1 
-let results_blast2 = Blast.blastp ~threads:2 ~evalue:1e-6 blastdb_prot proteins out_blast2
-let results_blast_xml = Blast.blastp ~threads:2 ~evalue:1e-6 ~outfmt:"5" blastdb_prot proteins out_blast_xml 
+(*let results_blast = Blast.blastn ~threads:2 ~evalue:1e-6 blastdb_allgenome prokka_transcripts out_blast1 
+let results_blast2 = Blast.blastp ~threads:2 ~evalue:1e-6 blastdb_prot proteins out_blast2*)
+let results_blast = Blast.test_blastp ~threads:2 ~evalue:1e-6 blastdb_prot proteins
 
-let xml = input "/home/cecile/projetM2/resultat_complet/blast_prot_xml/cds_vs_proteinsref.xml"
+let xml = results_blast/Blast.xml 
 
 let blast_treatment = Blast_treatment.run xml 
 
@@ -46,9 +43,10 @@ let repo = Repo.[
   [ "assembly" ] %> assembly ; 
   [ "quast" ] %> quast_output; 
   [ "annotation" ] %> annotation ; 
-  [ "blast_nucl" ] %> results_blast ; 
+  (*[ "blast_nucl" ] %> results_blast ; 
   [ "blast_prot" ] %> results_blast2 ;
-  [ "blast_prot_xml" ] %> results_blast_xml ; 
+  [ "blast_prot_xml" ] %> results_blast_xml ; *) 
+  [ "blast_prot_test" ] %> results_blast ; 
   [ "test" ] %> blast_treatment ; 
 
 ]
