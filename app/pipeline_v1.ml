@@ -3,15 +3,16 @@ open Bistro.EDSL;;
 open Bistro_bioinfo.Std;;
 open Bistro_utils;;
 open Bistro_bioinfo;;
+open Bistro.Std 
 
 module type Param = sig 
-	val fq1 : string 
-	val fq2 : string 
+	val fq1 : [`sanger] fastq workflow   
+	val fq2 : [`sanger] fastq workflow  
 end 
 
 module Make (P : Param) = struct 
-	let reads1 = input P.fq1 
-	let reads2 = input P.fq2 
+	let reads1 = P.fq1
+	let reads2 = P.fq2 
 	let assembly = Spades.spades ~memory:4 ~pe:([reads1],[reads2]) ()
 	let contigs = assembly/Spades.contigs
 	let quast_output = Quast.quast ~labels:["spades_assembly"] [contigs]
