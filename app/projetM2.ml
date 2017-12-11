@@ -36,6 +36,7 @@ let pipeline_eval_spec =
   	empty
   	+> flag "--outdir" (required string) ~doc:"PATH Path to outdir directory"
 
+
 let pipeline_eval_command =
   Command.basic
     ~summary:""
@@ -43,11 +44,26 @@ let pipeline_eval_command =
     pipeline_eval_main
 
 
+let pipeline_web_main () = ()
+	
+
+
+let pipeline_web_spec = 
+ 	let open Command.Spec in
+  	empty
+  	
+
+let pipeline_web_command =
+  Command.basic
+    ~summary:""
+    pipeline_web_spec
+    pipeline_web_main
+
 
 
 
 let command = 
-	Command.group ~summary:"ProjetM2" [("pipeline",pipeline_command); ("eval",pipeline_eval_command)]    
+	Command.group ~summary:"ProjetM2" [("pipeline",pipeline_command); ("eval",pipeline_eval_command); ("web", pipeline_web_command)]    
 
 let () = Command.run command
 
