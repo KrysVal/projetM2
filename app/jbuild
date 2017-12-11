@@ -3,6 +3,7 @@
 (executable
  ((name projetM2)
   (public_name projetM2) 	
-  (libraries (bistro.bioinfo bistro.utils core))
+  (libraries (bistro.bioinfo bistro.utils bistro_server core))
+  (preprocess (pps (ppx_sexp_conv bistro_server.ppx)))
 ))
 

@@ -1,8 +1,11 @@
 B ../_build/default/app
+FLG -ppx '/home/cecile/projetM2/_build/default/.ppx/ppx_sexp_conv+bistro_server.ppx/ppx.exe --as-ppx'
 FLG -w -40
+PKG astring
 PKG base
 PKG base.caml
 PKG base.shadow_stdlib
+PKG base64
 PKG bigarray
 PKG bin_prot
 PKG bin_prot.shape
@@ -11,16 +14,32 @@ PKG bistro.bioinfo
 PKG bistro.engine
 PKG bistro.tdag
 PKG bistro.utils
+PKG bistro_server
+PKG bistro_server.common
 PKG bytes
+PKG cohttp
+PKG cohttp-lwt
+PKG cohttp-lwt-unix
+PKG cohttp.lwt
+PKG conduit
+PKG conduit-lwt
+PKG conduit-lwt-unix
+PKG containers
 PKG core
 PKG core_kernel
 PKG core_kernel.base_for_tests
 PKG fieldslib
+PKG fmt
+PKG ipaddr
+PKG ipaddr.unix
 PKG jane-street-headers
+PKG logs
+PKG logs.lwt
 PKG lwt
 PKG lwt.log
 PKG lwt.preemptive
 PKG lwt.unix
+PKG magic-mime
 PKG num
 PKG num.core
 PKG ocamlgraph
@@ -34,6 +53,8 @@ PKG ppx_hash.runtime-lib
 PKG ppx_inline_test.config
 PKG ppx_inline_test.runtime-lib
 PKG re
+PKG re.emacs
+PKG re.posix
 PKG result
 PKG rresult
 PKG sexplib
@@ -41,6 +62,7 @@ PKG sexplib.0
 PKG sexplib.unix
 PKG spawn
 PKG stdio
+PKG stringext
 PKG threads
 PKG threads.posix
 PKG typerep
@@ -48,5 +70,7 @@ PKG tyxml
 PKG tyxml.functor
 PKG uchar
 PKG unix
+PKG uri
+PKG uri.services
 PKG uutf
 PKG variantslib

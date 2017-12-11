@@ -44,8 +44,8 @@ let pipeline_eval_command =
     pipeline_eval_main
 
 
-let pipeline_web_main () = ()
-	
+let pipeline_web_main () = 
+	Lwt_main.run (Web.Server.start ())
 
 
 let pipeline_web_spec = 
@@ -58,8 +58,6 @@ let pipeline_web_command =
     ~summary:""
     pipeline_web_spec
     pipeline_web_main
-
-
 
 
 let command = 
