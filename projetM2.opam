@@ -1,0 +1,22 @@
+
+opam-version: "1.2"
+name: "projetM2"
+version: "dev"
+maintainer: "Philippe Veber <philippe.veber@gmail.com>"
+authors: "Philippe Veber <philippe.veber@gmail.com>"
+homepage: "https://github.com/KrysVal/projetM2"
+dev-repo: "https://github.com/KrysVal/projetM2.git"
+
+license: "GPL"
+build: [
+  ["jbuilder" "build" "--only-packages" "projetM2" "--root" "." "-j" jobs "@install"]
+]
+depends: [
+  "jbuilder"       {build & >= "1.0+beta8"}
+  "bistro"         {>= "0.2.0"}
+  "bistro_server"	
+
+]
+available: [
+  ocaml-version >= "4.03.0"
+]

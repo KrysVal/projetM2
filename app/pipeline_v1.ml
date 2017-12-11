@@ -20,7 +20,7 @@ module Make (P : Param) = struct
 	let annotation = Prokka2.run contigs
 	let repo = Repo.[
   		[ "assembly" ] %> assembly ; 
-		[ "quast" ] %> quast_output; 
+		[ "quast" ] %> quast_output ; 
 		[ "annotation" ] %> annotation ; 
 	]
 

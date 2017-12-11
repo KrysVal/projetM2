@@ -9,30 +9,32 @@ let env = docker_image ~account:"pveber" ~name:"ncbi-blast" ~tag:"2.4.0" ()
 let db_name = "db"
 
 let makedb ~dbtype:dbtype fa = 
-	let args = match dbtype with
-	 | `Nucl -> string "-dbtype nucl" 	
-	 | `Prot -> string "-dbtype prot"
+	let template_of_dbtype x = 
+		string (
+			match x with
+	 		| `Nucl -> "nucl" 	
+	 		| `Prot -> "prot"
+	 	) (* .mli : [`Nucl | `Prot]) *)
   	in 
 	workflow ~descr:"blast.makedb" [
 		cmd ~env "makeblastdb" [
 			opt "-in" dep fa ;
-			opt "-out" ident (dest // db_name); 
-			args ; 	
+			opt "-out" ident dest; 
+			opt "-dbtype" template_of_dbtype dbtype ; 	
 		] ; 	
 	]
 
 (* Basic blastn*)
 
 let results = "results.blast"
-let blastp ?evalue ?(threads = 4) ?outfmt db query = workflow ~descr:"blastp_xml" ~np:threads [
-	mkdir_p dest ; 
+let blastp ?evalue ?(threads = 4) ?outfmt db query = workflow ~descr:"blastp_xml" ~np:threads [ 
     cmd "blastp" ~env [
-      opt "-db" dep db // db_name ; 
+      opt "-db" dep db ; 
 	  opt "-query" dep query ; 
-	  opt "-out" ident (dest // results) ; 
+	  opt "-out" ident dest ; 
 	  option (opt "-evalue" float) evalue ;
 	  option (opt "-outfmt" string) outfmt ; 
     ]
   ]  
 
-let blast_align = selector ["results.blast"] 
+(*let blast_align = selector ["results.blast"]*) 
