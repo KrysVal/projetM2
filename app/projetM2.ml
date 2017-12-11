@@ -27,7 +27,9 @@ let pipeline_command =
 
 
 
-let pipeline_eval_main outdir () = ()  
+let pipeline_eval_main outdir () =  
+	let logger = Console_logger.create () in (* Show more error messages *)
+	let () = Repo.build ~logger ~outdir ~np:2 ~mem:(`GB 4) Eval.repo in () (* Launch pipeline *)
 
 let pipeline_eval_spec = 
  	let open Command.Spec in
@@ -40,7 +42,13 @@ let pipeline_eval_command =
     pipeline_eval_spec
     pipeline_eval_main
 
+
+
+
+
 let command = 
 	Command.group ~summary:"ProjetM2" [("pipeline",pipeline_command); ("eval",pipeline_eval_command)]    
 
 let () = Command.run command
+
+
