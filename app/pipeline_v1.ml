@@ -8,6 +8,7 @@ open Bistro.Std
 module type Param = sig 
 	val fq1 : [`sanger] fastq workflow   
 	val fq2 : [`sanger] fastq workflow  
+	val reference : fasta workflow option 
 end 
 
 module Make (P : Param) = struct 
@@ -15,7 +16,7 @@ module Make (P : Param) = struct
 	let reads2 = P.fq2 
 	let assembly = Spades.spades ~memory:4 ~pe:([reads1],[reads2]) ()
 	let contigs = assembly/Spades.contigs
-	let quast_output = Quast.quast ~labels:["spades_assembly"] [contigs]
+	let quast_output = Quast.quast ?reference:P.reference ~labels:["spades_assembly"] [contigs]
 	let annotation = Prokka2.run contigs
 	let repo = Repo.[
   		[ "assembly" ] %> assembly ; 

@@ -13,6 +13,7 @@ let reference = fetch "test" (* A voir *)
 module P = struct 
 	let fq1 = reads1 
 	let fq2 = reads2 
+	let reference = Some reference 
 end 
 
 module Pipeline = Pipeline_v1.Make(P)	
