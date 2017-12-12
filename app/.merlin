@@ -1,5 +1,5 @@
 B ../_build/default/app
-FLG -ppx '/home/cecile/projetM2/_build/default/.ppx/ppx_sexp_conv+bistro_server.ppx/ppx.exe --as-ppx'
+FLG -ppx '/home/lucia/Desktop/projetS3/projetM2/_build/default/.ppx/ppx_sexp_conv+bistro_server.ppx/ppx.exe --as-ppx'
 FLG -w -40
 PKG astring
 PKG base

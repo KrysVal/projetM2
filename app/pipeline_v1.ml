@@ -5,17 +5,17 @@ open Bistro_utils;;
 open Bistro_bioinfo;;
 open Bistro.Std 
 
- let head ~n w =
+ let head ~n w = workflow ~descr:"head" [ 
     cmd "head" ~stdout:dest [
     
       opt "-n" int n ;
       dep w ;
 
 ]
+]
 
 let transform r = 
-	match r with 
-	r -> head ~n:40000 r 
+	head ~n:40000 r 
 		
 module type Param = sig 
 	val fq1 : [`sanger] fastq workflow   
@@ -25,9 +25,21 @@ module type Param = sig
 end 
 
 module Make (P : Param) = struct 
-	let reads1 = P.fq1
-	let reads2 = P.fq2
+	(*let reads1 = P.fq1
+	let reads2 = P.fq2 *)
 
+let reads1,reads2 = 
+	if P.preview then
+		transform P.fq1, transform P.fq2
+
+	else
+
+		P.fq1, P.fq1 
+
+
+
+
+	(*
 	if P.preview then begin 
 		transform reads1 ; 
 		transform reads2 ; 
@@ -41,6 +53,7 @@ module Make (P : Param) = struct
 		let reads2 = P.fq2 ; 
 	end 	
 		
+	*)
 	let assembly = Spades.spades ~memory:4 ~pe:([reads1],[reads2]) ()
 	let contigs = assembly/Spades.contigs
 	let quast_output = Quast.quast ?reference:P.reference ~labels:["spades_assembly"] [contigs]
@@ -51,8 +64,8 @@ module Make (P : Param) = struct
 		[ "annotation" ] %> annotation ; 
 	]
 
-	
-end 	
+end
+
 
 (*let reads1 = input "/home/cecile/projetM2_data/data/reads1_100k.fastq" (* Read file as workflow *)
 let reads2 = input "/home/cecile/projetM2_data/data/reads2_100k.fastq"

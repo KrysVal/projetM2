@@ -14,6 +14,7 @@ module P = struct
 	let fq1 = reads1 
 	let fq2 = reads2 
 	let reference = Some reference 
+	let preview = true
 end 
 
 module Pipeline = Pipeline_v1.Make(P)	
