@@ -7,7 +7,8 @@ let pipeline_main fq1 fq2 outdir () =
 	let module P = struct 
 		let fq1 = input fq1 
 		let fq2 = input fq2  
-		let reference = None 
+		let reference = None
+
 	end in 
 	let module Pipeline = Pipeline_v1.Make(P) in 
 	let () = Repo.build ~logger ~outdir ~np:2 ~mem:(`GB 4) Pipeline.repo in () (* Launch pipeline *)
@@ -18,6 +19,7 @@ let pipeline_spec =
   +> flag "--fq1" (required file) ~doc:"PATH Path to forward reads"
   +> flag "--fq2" (required file) ~doc:"PATH Path to reverse reads"
   +> flag "--outdir" (required string) ~doc:"PATH Path to outdir directory"
+  +> flaf "--preview" (no_arg) ~doc:"specify if run pipeline in preview test mode" 
 
 let pipeline_command =
   Command.basic

@@ -5,21 +5,48 @@ open Bistro_utils;;
 open Bistro_bioinfo;;
 open Bistro.Std 
 
+ let head ~n w =
+    cmd "head" ~stdout:dest [
+    
+      opt "-n" int n ;
+      dep w ;
+
+]
+
+let transform r = 
+	match r with 
+	r -> head ~n:40000 r 
+		
 module type Param = sig 
 	val fq1 : [`sanger] fastq workflow   
 	val fq2 : [`sanger] fastq workflow  
 	val reference : fasta workflow option 
+	val preview : bool
 end 
 
 module Make (P : Param) = struct 
 	let reads1 = P.fq1
-	let reads2 = P.fq2 
+	let reads2 = P.fq2
+
+	if P.preview then begin 
+		transform reads1 ; 
+		transform reads2 ; 
+
+	if P.preview then begin 
+		let reads1 = head ~n:40000 P.fq1 ; 
+		let reads2 = head ~n:40000 P.fq2 ; 
+	end 	
+	else 	
+		let reads1 = P.fq1 ; 
+		let reads2 = P.fq2 ; 
+	end 	
+		
 	let assembly = Spades.spades ~memory:4 ~pe:([reads1],[reads2]) ()
 	let contigs = assembly/Spades.contigs
 	let quast_output = Quast.quast ?reference:P.reference ~labels:["spades_assembly"] [contigs]
 	let annotation = Prokka2.run contigs
 	let repo = Repo.[
-  		[ "assembly" ] %> assembly ; 
+	  	[ "assembly" ] %> assembly ; 
 		[ "quast" ] %> quast_output ; 
 		[ "annotation" ] %> annotation ; 
 	]
