@@ -9,6 +9,7 @@ module Pipeline_App = struct
 		sample_id : string ; 
 		sample_file1 : string [@file] ; 
 		sample_file2 : string [@file] ; 
+		sample_preview : string ;
 	}
 	[@@deriving sexp, bistro_form]
 
@@ -20,6 +21,7 @@ module Pipeline_App = struct
 			let fq1 = input (data i.sample_file1) 
 			let fq2 = input (data i.sample_file2) 
 			let reference = None
+			let preview = true
 		end in   
 		let module Pipeline = Pipeline_v1.Make(P) in 
 		Pipeline.repo 

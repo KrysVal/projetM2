@@ -2,13 +2,13 @@ open Core;;
 open Bistro_utils;;
 open Bistro.EDSL 
 
-let pipeline_main fq1 fq2 outdir () = 
+let pipeline_main fq1 fq2 outdir preview () = 
 	let logger = Console_logger.create () in (* Show more error messages *)
 	let module P = struct 
 		let fq1 = input fq1 
 		let fq2 = input fq2  
 		let reference = None
-    let preview = true
+    let preview = preview
 
 	end in 
 	let module Pipeline = Pipeline_v1.Make(P) in 
@@ -20,7 +20,7 @@ let pipeline_spec =
   +> flag "--fq1" (required file) ~doc:"PATH Path to forward reads"
   +> flag "--fq2" (required file) ~doc:"PATH Path to reverse reads"
   +> flag "--outdir" (required string) ~doc:"PATH Path to outdir directory"
-  (*+> flag "--preview" (no_arg) ~doc:"specify if run pipeline in preview test mode" *)
+  +> flag "--preview" (no_arg) ~doc:"specify if run pipeline in preview test mode"
 
 let pipeline_command =
   Command.basic
@@ -30,7 +30,7 @@ let pipeline_command =
 
 
 
-let pipeline_eval_main outdir () =  
+let pipeline_eval_main outdir preview () =  
 	let logger = Console_logger.create () in (* Show more error messages *)
 	let () = Repo.build ~logger ~outdir ~np:2 ~mem:(`GB 4) Eval.repo in () (* Launch pipeline *)
 
@@ -39,6 +39,7 @@ let pipeline_eval_spec =
  	let open Command.Spec in
   	empty
   	+> flag "--outdir" (required string) ~doc:"PATH Path to outdir directory"
+    +> flag "--preview" (no_arg) ~doc:"bool yes or no"
 
 
 let pipeline_eval_command =

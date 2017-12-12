@@ -9,15 +9,19 @@ let reads2 = fetch "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR107/002/ERR1073432/ERR
 (* TROUVER REF URL*)
 
 let reference = fetch "test" (* A voir *)
+module Make (P : Param) = struct 
+	let reads1 = fetch "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR107/002/ERR1073432/ERR1073432_1.fastq.gz"
+	let reads2 = fetch "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR107/002/ERR1073432/ERR1073432_2.fastq.gz"
+	let reference = fetch "test" (* A voir *)
 
-module P = struct 
+module P2 = struct 
 	let fq1 = reads1 
 	let fq2 = reads2 
 	let reference = Some reference 
-	let preview = true
+	let preview = P.preview
 end 
 
-module Pipeline = Pipeline_v1.Make(P)	
+module Pipeline = Pipeline_v1.Make(P2)	
 
 include Pipeline 
 
