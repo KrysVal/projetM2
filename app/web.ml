@@ -4,12 +4,13 @@ open Bistro_bioinfo.Std
 open Bistro_utils
 
 
+
 module Pipeline_App = struct 
 	type input = { 
 		sample_id : string ; 
 		sample_file1 : string [@file] ; 
 		sample_file2 : string [@file] ; 
-		sample_preview : string ;
+		(*sample_preview : int ;*)
 	}
 	[@@deriving sexp, bistro_form]
 

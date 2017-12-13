@@ -46,7 +46,7 @@ let pipeline_eval_spec =
  	let open Command.Spec in
   	empty
   	+> flag "--outdir" (required string) ~doc:"PATH Path to outdir directory"
-    +> flag "--preview" (optional int) ~doc:"bool yes or no"
+    +> flag "--preview" (optional int) ~doc:"INT number of sample reads (in thousand)"
 
 
 let pipeline_eval_command =
@@ -56,13 +56,18 @@ let pipeline_eval_command =
     pipeline_eval_main
 
 
-let pipeline_web_main () = 
-	Lwt_main.run (Web.Server.start ())
+let pipeline_web_main port np mem root_dir () = 
+	Lwt_main.run (Web.Server.start ~port ~np ~mem:(`GB mem) ~root_dir ())
+
 
 
 let pipeline_web_spec = 
- 	let open Command.Spec in
-  	empty
+ 	let open Command.Spec in 
+ 	empty
+  	+> flag "--port" (required int) ~doc:"INT name of port"
+    +> flag "--np" (required int) ~doc:"INT number of processors"
+    +> flag "--mem" (required int) ~doc:"INT memory used in GB"
+    +> flag "--root-dir" (required string) ~doc:"PATH path to root directory"
   	
 
 let pipeline_web_command =
