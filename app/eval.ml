@@ -41,8 +41,16 @@ module Make (P : Param) = struct
 	let blastdb_prot = Blast.makedb ~dbtype:`Prot ref_proteins 
 	let blast_results = Blast.blastp ~threads:2 ~evalue:1e-6 ~outfmt:"5" blastdb_prot proteins
 	let blast_treatment = Blast_treatment.run blast_results
-end
 
+	let repo2 = Repo.[
+	[ "eval_blast"] %> blast_treatment
+	]
+
+	let repo = Pipeline.repo@repo2
+
+
+
+	end
 (*
 module P2 = struct 
 	let fq1 = reads1 
