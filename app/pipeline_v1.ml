@@ -14,14 +14,14 @@ open Bistro.Std
 ]
 ]
 
-let transform r = 
-	fastq_head ~n:50000 r 
+let transform r n = 
+	fastq_head ~n:(n*1000) r 
 		
 module type Param = sig 
 	val fq1 : [`sanger] fastq workflow   
 	val fq2 : [`sanger] fastq workflow  
 	val reference : fasta workflow option 
-	val preview : bool
+	val preview : int option
 end
 
 
@@ -30,13 +30,18 @@ module Make (P : Param) = struct
 	let reads2 = P.fq2 *)
 
 let reads1,reads2 = 
+
+	match P.preview with
+		|None -> P.fq1, P.fq2
+		|Some n -> transform P.fq1 n, transform P.fq2 n
+(*
 	if P.preview then
 		transform P.fq1, transform P.fq2
 
 	else
 
 		P.fq1, P.fq1 
-
+*)
 
 
 

@@ -16,13 +16,15 @@ let reads2 = fetch "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR107/002/ERR1073432/ERR
 (* TROUVER REF URL*)
 
 module type Param = sig  
-	val preview : bool
+	val preview : int option
+
 end
 
 module Make (P : Param) = struct 
 	let reads1 = fetch "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR107/002/ERR1073432/ERR1073432_1.fastq.gz"
 	let reads2 = fetch "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR107/002/ERR1073432/ERR1073432_2.fastq.gz"
 	let reference = fetch "test" (* A voir *)
+
 	module P2 = struct 
 		let fq1 = reads1 
 		let fq2 = reads2 

@@ -21,7 +21,7 @@ module Pipeline_App = struct
 			let fq1 = input (data i.sample_file1) 
 			let fq2 = input (data i.sample_file2) 
 			let reference = None
-			let preview = true
+			let preview = Some 50
 		end in   
 		let module Pipeline = Pipeline_v1.Make(P) in 
 		Pipeline.repo 

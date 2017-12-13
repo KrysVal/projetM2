@@ -8,8 +8,8 @@ let pipeline_main fq1 fq2 outdir preview () =
 		let fq1 = input fq1 
 		let fq2 = input fq2  
 		let reference = None
-    let preview = preview
-    
+    	let preview = preview
+
 
 	end in 
 	let module Pipeline = Pipeline_v1.Make(P) in 
@@ -21,7 +21,9 @@ let pipeline_spec =
   +> flag "--fq1" (required file) ~doc:"PATH Path to forward reads"
   +> flag "--fq2" (required file) ~doc:"PATH Path to reverse reads"
   +> flag "--outdir" (required string) ~doc:"PATH Path to outdir directory"
-  +> flag "--preview" (no_arg) ~doc:"specify if run pipeline in preview test mode"
+  +> flag "--preview" (optional int) ~doc:"INT specify number of sample reads to test"
+
+
 
 let pipeline_command =
   Command.basic
@@ -44,7 +46,7 @@ let pipeline_eval_spec =
  	let open Command.Spec in
   	empty
   	+> flag "--outdir" (required string) ~doc:"PATH Path to outdir directory"
-    +> flag "--preview" (no_arg) ~doc:"bool yes or no"
+    +> flag "--preview" (optional int) ~doc:"bool yes or no"
 
 
 let pipeline_eval_command =
