@@ -5,17 +5,17 @@ open Bistro_utils;;
 open Bistro_bioinfo;;
 open Bistro.Std 
 
- let head ~n w = workflow ~descr:"head" [ 
+ let fastq_head ~n w = workflow ~descr:"head" [ 
     cmd "head" ~stdout:dest [
     
-      opt "-n" int n ;
+      opt "-n" int (n*4) ;
       dep w ;
 
 ]
 ]
 
 let transform r = 
-	head ~n:40000 r 
+	fastq_head ~n:50000 r 
 		
 module type Param = sig 
 	val fq1 : [`sanger] fastq workflow   

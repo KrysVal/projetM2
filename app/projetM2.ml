@@ -8,7 +8,8 @@ let pipeline_main fq1 fq2 outdir preview () =
 		let fq1 = input fq1 
 		let fq2 = input fq2  
 		let reference = None
-    let preview = true
+    let preview = preview
+    
 
 	end in 
 	let module Pipeline = Pipeline_v1.Make(P) in 
@@ -32,8 +33,12 @@ let pipeline_command =
 
 let pipeline_eval_main outdir preview () =  
 	let logger = Console_logger.create () in (* Show more error messages *)
-	let () = Repo.build ~logger ~outdir ~np:2 ~mem:(`GB 4) Eval.repo in () (* Launch pipeline *)
+	let module P = struct 
+    	let preview = preview
 
+	end in 
+	let module Eval = Eval.Make(P) in 
+	let () = Repo.build ~logger ~outdir ~np:2 ~mem:(`GB 4) Eval.repo in () (* Launch pipeline *)
 
 let pipeline_eval_spec = 
  	let open Command.Spec in
