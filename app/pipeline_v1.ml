@@ -60,6 +60,8 @@ let reads1,reads2 =
 	end 	
 		
 	*)
+
+
 	let assembly = Spades.spades ~memory:4 ~pe:([reads1],[reads2]) ()
 	let contigs = assembly/Spades.contigs
 	let quast_output = Quast.quast ?reference:P.reference ~labels:["spades_assembly"] [contigs]
@@ -68,6 +70,7 @@ let reads1,reads2 =
 	  	[ "assembly" ] %> assembly ; 
 		[ "quast" ] %> quast_output ; 
 		[ "annotation" ] %> annotation ; 
+		
 	]
 
 end
