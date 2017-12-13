@@ -22,7 +22,8 @@ module type Param = sig
 	val fq2 : [`sanger] fastq workflow  
 	val reference : fasta workflow option 
 	val preview : bool
-end 
+end
+
 
 module Make (P : Param) = struct 
 	(*let reads1 = P.fq1

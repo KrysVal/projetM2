@@ -8,7 +8,7 @@ let pipeline_main fq1 fq2 outdir preview () =
 		let fq1 = input fq1 
 		let fq2 = input fq2  
 		let reference = None
-    let preview = preview
+    let preview = true
 
 	end in 
 	let module Pipeline = Pipeline_v1.Make(P) in 
