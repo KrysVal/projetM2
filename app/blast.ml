@@ -19,7 +19,7 @@ let makedb ~dbtype:dbtype fa =
 	workflow ~descr:"blast.makedb" [
 		cmd ~env "makeblastdb" [
 			opt "-in" dep fa ;
-			opt "-out" ident dest; 
+			opt "-out" ident (dest//db_name) ; 
 			opt "-dbtype" template_of_dbtype dbtype ; 	
 		] ; 	
 	]
@@ -29,7 +29,7 @@ let makedb ~dbtype:dbtype fa =
 let results = "results.blast"
 let blastp ?evalue ?(threads = 4) ?outfmt db query = workflow ~descr:"blastp_xml" ~np:threads [ 
     cmd "blastp" ~env [
-      opt "-db" dep db ; 
+      opt "-db" ident (dep db // db_name) ; 
 	  opt "-query" dep query ; 
 	  opt "-out" ident dest ; 
 	  option (opt "-evalue" float) evalue ;
