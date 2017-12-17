@@ -14,7 +14,7 @@ BAAL use :
 All you need to do is to run the script etc/config_VM.sh in you terminal to install BAAL and all it dependencies. Once the installation is over, you can use your browser to acess BAAL web interface on localhost:8080.
 
 ##### Running the pipeline using the scripts :
-if you want son't want to use BAAL web interface, two other modes are available : the pipeline mode and the eval mode.
+if you don't want to use BAAL web interface, two other modes are available : the pipeline mode and the eval mode.
 > Ajout d'un schéma avec les différents modes de BAAL
 
 **Pipeline Mode:** ```_build/default/app/projetM2.exe pipeline --fq1 [PATH to R1 fastq] --fq2 [PATH to R2 fastq] --outdir [a PATH to outdir] ```
@@ -42,7 +42,6 @@ This pipeline was test with the Run [ERR1073432](https://www.ebi.ac.uk/ena/data/
 **Dependancies :**
 - [_opam_](https://opam.ocaml.org/) : package manager for OCaml.
 - [_bistro_](https://github.com/pveber/bistro) : A library to build and execute typed scientific workflows.
-- [_utop_](https://github.com/diml/utop) :utop is an improved toplevel for OCaml. It can run in a terminal or in Emacs. It supports line edition, history, real-time and context sensitive completion, colors, and more. It integrates with the tuareg mode in Emacs.
 - [_bistro_server_](https://github.com/pveber/bistro_server.git) : A simple server running bistro workflows.
 - [_apt-transport-https_](https://packages.debian.org/en/jessie/apt-transport-https) : Enables the usage of 'deb https://foo distro main' lines in the /etc/apt/sources.list so that all package managers using the libapt-pkg library can access metadata and packages available in sources accessible over https.
 - [_ca-certificates_](https://packages.debian.org/en/sid/ca-certificates) : Contains the certificate authorities shipped with Mozilla's browser to allow SSL-based applications to check for the authenticity of SSL connections.
