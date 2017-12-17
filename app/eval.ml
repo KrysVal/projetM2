@@ -40,11 +40,23 @@ module Make (P : Param) = struct
 	let proteins = Pipeline.annotation/Prokka2.proteins
 	let blastdb_prot = Blast.makedb ~dbtype:`Prot ref_proteins 
 	let blast_results = Blast.blastp ~threads:2 ~evalue:1e-6 ~outfmt:"5" blastdb_prot proteins
-	let blast_treatment = Blast_treatment.run blast_results
+	let blast_results_70 = Blast.blastp ~threads:2 ~evalue:1e-6 ~query_cov:70.0 ~outfmt:"5" blastdb_prot proteins
+	let blast_results_80 = Blast.blastp ~threads:2 ~evalue:1e-6 ~query_cov:80.0 ~outfmt:"5" blastdb_prot proteins
+	let blast_results_90 = Blast.blastp ~threads:2 ~evalue:1e-6 ~query_cov:90.0 ~outfmt:"5" blastdb_prot proteins
+	let blast_results_100 = Blast.blastp ~threads:2 ~evalue:1e-6 ~query_cov:100.0 ~outfmt:"5" blastdb_prot proteins
+	let blast_tr = Blast_treatment.run blast_results
+	let blast_tr_70 = Blast_treatment.run blast_results_70
+	let blast_tr_80 = Blast_treatment.run blast_results_80
+	let blast_tr_90 = Blast_treatment.run blast_results_90
+	let blast_tr_100 = Blast_treatment.run blast_results_100
 
 	let repo2 = Repo.[
-	[ "eval_blast"] %> blast_treatment
-	]
+		[ "eval_blast" ] %> blast_tr ;	
+		[ "eval_blast_70" ] %> blast_tr_70 ;	
+		[ "eval_blast_80" ] %> blast_tr_80 ;	
+		[ "eval_blast_90" ] %> blast_tr_90 ;	
+		[ "eval_blast_100"] %> blast_tr_100 
+	]	
 
 	let repo = Pipeline.repo@repo2
 
@@ -66,3 +78,4 @@ end
 
 
 
+ 

@@ -27,13 +27,14 @@ let makedb ~dbtype:dbtype fa =
 (* Basic blastn*)
 
 let results = "results.blast"
-let blastp ?evalue ?(threads = 4) ?outfmt db query = workflow ~descr:"blastp_xml" ~np:threads [ 
+let blastp ?evalue ?(threads = 4) ?outfmt ?query_cov db query = workflow ~descr:"blastp_xml" ~np:threads [ 
     cmd "blastp" ~env [
       opt "-db" ident (dep db // db_name) ; 
 	  opt "-query" dep query ; 
 	  opt "-out" ident dest ; 
 	  option (opt "-evalue" float) evalue ;
 	  option (opt "-outfmt" string) outfmt ; 
+	  option (opt "-qcov_hsp_perc" float) query_cov ;  
     ]
   ]  
 
