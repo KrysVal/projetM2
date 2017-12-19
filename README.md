@@ -40,9 +40,8 @@ Once the installation is finished (it might take a while), you can use your brow
 If you don't want to use BAAL web interface, you can always run the pipeline mode or eval mode. To do this, you must delete the last line in **etc/config_VM.sh** and run it in your terminal. The next step depends on whether you choose to run the pipeline mode or eval mode.
 
 **Pipeline Mode:** 
-After running the bash file, type the following command in your terminal in the same directory where you runned  **etc/config_VM.sh** :  
-```projetM2 pipeline --fq1 [PATH to R1 fastq] --fq2 [PATH to R2 fastq] --outdir [a PATH to outdir] 
-```
+After running the bash file, type the following command in your terminal in the same directory where you runned  **etc/config_VM.sh** :  ```projetM2 pipeline --fq1 [PATH to R1 fastq] --fq2 [PATH to R2 fastq] --outdir [a PATH to outdir] ```
+
 The available flags are :
 ```
     --fq1 PATH       Path to forward reads -* Mandatory *-
