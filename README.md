@@ -114,6 +114,13 @@ The available flags are :
     [-help]          print this help text and exit (alias: -?)
 ```
 
+### I want to make experiments
+
+If you are a developper and you want to add or modify functionalities, you can update or create files in ```app``` repository. 
+Then you will have to compile your new project by launching ```jbuilder build``` in the project root directory (projetM2). 
+The new executable will be in ```_build/default/app```. 
+Don't hesitate to fork and pull requests. 
+
 ## Further information
 **Dataset used to test BAAL :**
 This pipeline was tested with the Run [ERR1073432](https://www.ebi.ac.uk/ena/data/view/ERR1073432) of Escherichia coli str. K-12 substr. MG1655 from the European Nucleotide Archive. 
@@ -122,7 +129,6 @@ The reference genome and protein sequences for evaluation are E.coli K12 sequenc
 **Dependencies :**
 - [_opam_](https://opam.ocaml.org/) : package manager for OCaml.
 - [_bistro_](https://github.com/pveber/bistro) : A library to build and execute typed scientific workflows.
-- [_utop_](https://github.com/diml/utop) :utop is an improved toplevel for OCaml. It can run in a terminal or in Emacs. It supports line edition, history, real-time and context sensitive completion, colors, and more. It integrates with the tuareg mode in Emacs.
 - [_bistro_server_](https://github.com/pveber/bistro_server.git) : A simple server running bistro workflows.
 - [_apt-transport-https_](https://packages.debian.org/en/jessie/apt-transport-https) : Enables the usage of 'deb https://foo distro main' lines in the /etc/apt/sources.list so that all package managers using the libapt-pkg library can access metadata and packages available in sources accessible over https.
 - [_ca-certificates_](https://packages.debian.org/en/sid/ca-certificates) : Contains the certificate authorities shipped with Mozilla's browser to allow SSL-based applications to check for the authenticity of SSL connections.
