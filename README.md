@@ -26,21 +26,74 @@ BAAL uses :
 - BLAST+ (v2.7.1) for genome annotation evaluation
 
 
-
 ## Getting started
 
 There are two ways of running BAAL: in command line (local installation) or through the cloud (coming soon).
 
-##### Command line :
-All you need to do is to run the script etc/config_VM.sh in to install and execute BAAL and all its dependencies : just type ```bash etc/config_VM.sh``` in your terminal. This **etc/config_VM.sh** runs BAAL in the web mode. 
+### Installation 
 
-Once the installation is finished (it might take a while), you can use your browser to acess BAAL web interface on your localhost server (for example localhost:8080). If you want to change the port, edit the last line of the **etc/config_VM.sh** document. Instead of choosing ~port:8080, change the port number as you like. 
+The following installation works for Ubuntu systems (14.04 and 16.04 have been tested)
 
-##### Another running alternative :
-If you don't want to use BAAL web interface, you can always run the pipeline mode or eval mode. To do this, you must delete the last line in **etc/config_VM.sh** and run it in your terminal. The next step depends on whether you choose to run the pipeline mode or eval mode.
+#### Easy mode 
 
-**Pipeline Mode:** 
-After running the bash file, type the following command in your terminal in the same directory where you runned  **etc/config_VM.sh** :  ```projetM2 pipeline --fq1 [PATH to R1 fastq] --fq2 [PATH to R2 fastq] --outdir [a PATH to outdir] ```
+1. Clone the git repository : ```git clone https://github.com/KrysVal/projetM2```
+2. Go to the repository : ```cd projetM2``` 
+3. Launch the installation script : ```bash etc/install.sh```. It may take a while. If something goes wrong with this step, try the hardest solution below to see which step doesn't work. 
+
+#### Hardest mode (detailled installation)
+
+You can launch all installations steps one by one, following this : 
+1. Update your apt repository : ```sudo apt update```
+2. Install apt packages : opam, m4, apt-transport-https, curl, ca-certificates, software-properties-common
+```
+sudo apt install opam
+sudo apt install m4
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+``` 
+3. Install docker. You will have to add repository to apt. 
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt update
+sudo apt install docker-ce
+```
+4. Initialize opam and install ocaml packages : bistro, bistro_server, ocaml-vdom, projetM2 (this tool)
+```
+opam init -y --comp=4.05.0
+eval `opam config env`
+opam pin add -y bistro --dev-repo
+opam pin add -y ocaml-vdom git://github.com/lexifi/ocaml-vdom.git
+opam pin add -y bistro_server https://github.com/pveber/bistro_server.git
+opam pin add -y projetM2 https://github.com/KrysVal/projetM2.git
+```
+
+See dependencies links if something goes wrong.  
+
+
+### Start 
+
+#### Web mode (easy, with web interface)
+
+To access web mode, launch : ```projetM2 web --mem 4 --np 4 --port 8080 --root-dir BAAL_repo```. Then, you can use your browser to acess BAAL web interface on your localhost server (here localhost:8080). 
+
+You can modify the different arguments if you want, The available flags are :
+```
+  --mem INT        memory used in GB
+  --np INT         number of processors
+  --port INT       name of port
+  --root-dir PATH  path to root directory
+
+```
+
+#### Pipeline mode (command line usage)
+After running the bash file, type the following command in your terminal in the same directory where you runned  **etc/install.sh** :  ```projetM2 pipeline --fq1 [PATH to R1 fastq] --fq2 [PATH to R2 fastq] --outdir [a PATH to outdir] ```
 
 The available flags are :
 ```
@@ -51,7 +104,9 @@ The available flags are :
     [-help]          print this help text and exit (alias: -?)
 ```
 
-**Run Eval Mode:** ```projetM2 eval --outdir [a PATH to outdir]  ```
+#### Eval Mode:
+This mode is just if you want to check again if the pipeline works correctly with a reference dataset. 
+```projetM2 eval --outdir [a PATH to outdir]  ```
 The available flags are :
 ```
     --outdir PATH    Path to outdir directory -* Mandatory *-
@@ -61,7 +116,8 @@ The available flags are :
 
 ## Further information
 **Dataset used to test BAAL :**
-This pipeline was tested with the Run [ERR1073432](https://www.ebi.ac.uk/ena/data/view/ERR1073432) of Escherichia coli str. K-12 substr. MG1655 from the European Nucleotide Archive.
+This pipeline was tested with the Run [ERR1073432](https://www.ebi.ac.uk/ena/data/view/ERR1073432) of Escherichia coli str. K-12 substr. MG1655 from the European Nucleotide Archive. 
+The reference genome and protein sequences for evaluation are E.coli K12 sequences (accession number : GCF_000005845.2)
 
 **Dependencies :**
 - [_opam_](https://opam.ocaml.org/) : package manager for OCaml.
