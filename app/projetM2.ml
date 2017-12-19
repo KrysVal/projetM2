@@ -37,7 +37,7 @@ let pipeline_spec =
 
 let pipeline_command =
   Command.basic
-    ~summary:"Launch the pipeline in command lines with your own dataset to assemble, annotate and evaluate the results."
+    ~summary:"Launch the pipeline in command line."
     pipeline_spec
     pipeline_main
 
@@ -64,7 +64,7 @@ let pipeline_eval_spec =
 
 let pipeline_eval_command =
   Command.basic
-    ~summary:"Launch the evaluation of the pipeline on e.coli data get from the ENA web server."
+    ~summary:"Launch the evaluation of the pipeline on e.coli data set get from the ENA web server."
     pipeline_eval_spec
     pipeline_eval_main
 
@@ -90,7 +90,7 @@ let pipeline_web_command =
     pipeline_web_spec
     pipeline_web_main
 
-let sum = "\n\nBistro Assembly and Annotation Launcher\n\n\tWelcome to our bioinformatics pipeline. This pipeline was created in order to automatize recurent analyze such as assembly and annotation on bacterian datasets. It uses SPAdes, QUAST and PROKKA softwares, but also a blast treatment made by our own. The scripts are coded in Ocaml and use Bistro and Bistro_server librairies.\nEnjoy ! " 
+let sum = "\n\nBistro Assembly and Annotation Launcher\n\n\tWelcome to our bioinformatics pipeline. This pipeline was created in order to automate recurrent analysis such as assembly and annotation of bacterial data sets. It uses SPAdes, QUAST and PROKKA softwares, but also a blast treatment made by our own. The scripts are coded in Ocaml and use Bistro and Bistro_server librairies.\nEnjoy ! " 
 
 (* definition des fonctions a lancer selon la commande entree *)
 let command = 
