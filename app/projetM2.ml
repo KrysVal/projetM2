@@ -57,8 +57,8 @@ let pipeline_eval_command =
 
 
 (* Instructions lorsque la commande web est lance *)
-let pipeline_web_main port np mem root_dir () =
-Lwt_main.run (Web.Server.start ~port ~np ~mem:(`GB mem) ~root_dir ())
+let pipeline_web_main port np mem root_dir daemon () =
+Lwt_main.run (Web.Server.start ~port ~np ~mem:(`GB mem) ~root_dir ~daemon ())
 
 
 let pipeline_web_command =
@@ -70,8 +70,9 @@ let pipeline_web_command =
       and np = flag "--np" (required int) ~doc:"INT number of processors"
       and mem = flag "--mem" (required int) ~doc:"INT memory used in GB"
       and root_dir = flag "--root-dir" (required string) ~doc:"PATH path to root directory"
+      and daemon_mode = flag "--daemon" no_arg ~doc:" run in daemon mode"
       in
-      pipeline_web_main port np mem root_dir]
+      pipeline_web_main port np mem root_dir daemon_mode]
 
 let sum = "\n\nBistro Assembly and Annotation Launcher\n\n\tWelcome to our bioinformatics pipeline. This pipeline was created in order to automate recurrent analysis such as assembly and annotation of bacterial data sets. It uses SPAdes, QUAST and PROKKA softwares, but also a blast treatment made by our own. The scripts are coded in Ocaml and use Bistro and Bistro_server librairies.\nEnjoy ! "
 
